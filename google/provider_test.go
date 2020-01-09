@@ -9,6 +9,7 @@ import (
 	"testing"
 	"time"
 
+	sdkAcctest "github.com/hashicorp/terraform-plugin-sdk/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -569,4 +570,9 @@ func multiEnvSearch(ks []string) string {
 		}
 	}
 	return ""
+}
+
+func TestMain(m *testing.M) {
+	sdkAcctest.UseNewFramework("google", Provider)
+	resource.TestMain(m)
 }
